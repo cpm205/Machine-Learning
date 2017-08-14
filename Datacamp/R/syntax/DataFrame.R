@@ -63,4 +63,7 @@ products <- data.frame(
 )
 print(products)
 subset(products, subset = profit < 12)
-
+products$item
+products$cost
+products$profit
+products$sold_out
