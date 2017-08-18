@@ -13,3 +13,4 @@ names(roulette_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 print(poker_vector)
 print(roulette_vector)
 
+
