@@ -8,4 +8,7 @@ matrix(1:9, byrow = TRUE, nrow = 3)
 
 matrix(1:9, byrow = FALSE, nrow = 3)
 
-
+matrix(
+  1:4, nrow = 2, byrow = TRUE, 
+  dimnames = list(c("x", "z"), c("q", "r"))
+)
