@@ -1,5 +1,6 @@
 # Import the numpy package as np
 import numpy as np
+
 # Create list baseball
 baseball = [180, 215, 210, 210, 188, 176, 209, 200]
 
@@ -29,3 +30,19 @@ print(np_baseball.shape)
 # Select the entire second column of np_baseball: np_weight
 np_weight = np_baseball[:,1]
 print(np_weight)
+
+# Print out the 50th row of np_baseball
+print(np_baseball[49,:])
+
+# Print out height of 1st player
+print(np_baseball[1:1])
+
+# Print out the mean of np_height
+print(np.mean(np_baseball))
+
+# Print out the median of np_height
+print(np.median(np_baseball))
+
+# Print out correlation between first and second column. Replace 'None'
+corr = np.corrcoef(np_baseball[:,0], np_baseball[:,1])
+print("Correlation: " + str(corr))
