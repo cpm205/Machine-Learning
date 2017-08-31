@@ -15,3 +15,13 @@ matrix(
 
 l <- list(c("x", "z"), c("q", "r"))
 print(l)
+
+
+x <- matrix(1:6, nrow = 2)
+rbind(x, c(10, 12, 14))
+
+
+x <- matrix(1:6, nrow = 2)
+cbind(x, c(10, 12, 14))
+
+
