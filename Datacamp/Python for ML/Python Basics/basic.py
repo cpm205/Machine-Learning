@@ -14,3 +14,8 @@ print("I started with $" + str(savings) + " and now have $" + str(result) + ". A
 pi_string = "3.1415926"
 # Convert pi_string into float: pi_float
 pi_float = float(pi_string)
+
+a = [4.34, 0.61, 6.55]
+b = ['g', 'g', 'h']
+c = [9, 3, 3]
+print([c, a, b])

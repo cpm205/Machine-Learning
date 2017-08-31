@@ -52,7 +52,7 @@ print(areas.count(14.5))
 areas.append(24.5)
 areas.append(15.45)
 
-# Print out areas
+# Print out areasa+
 print(areas)
 
 # Reverse the orders of the elements in areas

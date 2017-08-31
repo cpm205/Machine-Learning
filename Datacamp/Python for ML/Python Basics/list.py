@@ -54,3 +54,7 @@ areas_copy[0] = 5.0
 
 # Print areas
 print(areas)
+
+p = ['z', 'g', 'o', 'b', 'r', 'n']
+del(p[4])
+print(p)
