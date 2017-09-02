@@ -37,3 +37,6 @@ my_list["vec"]
 #Adding more information to the list
 my_list_full <- c(my_list, year = 1980)
 print(my_list_full)
+
+p <- c(22, 24, 49, 18, 1, 6)
+p[c(1, 5)]
