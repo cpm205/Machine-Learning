@@ -20,23 +20,28 @@ life_exp = [43.828000000000003, 76.423000000000002, 72.301000000000002, 42.73100
 print(gdp_cap[-1])
 print(life_exp[-1])
 
-# Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
-plt.plot(gdp_cap, life_exp)
-
-# Display the plot
-plt.show()
-
-# Change the line plot below to a scatter plot
 plt.scatter(gdp_cap, life_exp)
-
-# Put the x-axis on a logarithmic scale
 plt.xscale('log')
 
-# Show plot
-plt.show()
+# Strings
+xlab = 'GDP per Capita [in USD]'
+ylab = 'Life Expectancy [in years]'
+title = 'World Development in 2007'
+# Definition of tick_val and tick_lab
+tick_val = [1000,10000,100000]
+tick_lab = ['1k','10k','100k']
 
-# Build Scatter plot
-plt.scatter(pop,life_exp)
 
-# Show plot
+# Add axis labels
+plt.xlabel(xlab)
+plt.ylabel(ylab)
+
+# Add title
+plt.title(title)
+
+# Adapt the ticks on the x-axis
+plt.xticks(tick_val,tick_lab)
+
+# Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
+# Display the plot
 plt.show()
