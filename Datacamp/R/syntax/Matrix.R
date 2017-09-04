@@ -18,10 +18,13 @@ print(l)
 
 
 x <- matrix(1:6, nrow = 2)
+print(x)
 rbind(x, c(10, 12, 14))
 
 
-x <- matrix(1:6, nrow = 2)
-cbind(x, c(10, 12, 14))
+y <- matrix(1:6, nrow = 2)
+print(y)
+cbind(y, c(10, 12))
+
 
 
