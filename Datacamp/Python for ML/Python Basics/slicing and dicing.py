@@ -16,3 +16,7 @@ downstairs = areas[:6]
 
 # Alternative slicing to create upstairs
 upstairs = areas[6:]
+
+
+p = [["X", "Y", 0], [3, 9, 6], ["Z", 15, 10]]
+print(p[2][0])
