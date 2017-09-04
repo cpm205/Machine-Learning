@@ -31,6 +31,8 @@ title = 'World Development in 2007'
 tick_val = [1000,10000,100000]
 tick_lab = ['1k','10k','100k']
 
+ytick_val = [0,50,100]
+ytick_lab = ['0','50','100']
 
 # Add axis labels
 plt.xlabel(xlab)
@@ -41,6 +43,7 @@ plt.title(title)
 
 # Adapt the ticks on the x-axis
 plt.xticks(tick_val,tick_lab)
+#plt.yticks(ytick_val,ytick_lab)
 
 # Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
 # Display the plot
