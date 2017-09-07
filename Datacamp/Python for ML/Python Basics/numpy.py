@@ -31,8 +31,8 @@ print(np_baseball.shape)
 np_weight = np_baseball[:,1]
 print(np_weight)
 
-# Print out the 50th row of np_baseball
-print(np_baseball[49,:])
+# Print out the 4th row of np_baseball
+print(np_baseball[3,:])
 
 # Print out height of 1st player
 print(np_baseball[1:1])
