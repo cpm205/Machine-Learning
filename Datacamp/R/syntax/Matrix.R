@@ -8,6 +8,7 @@ matrix(1:9, byrow = TRUE, nrow = 3)
 
 matrix(1:9, byrow = FALSE, nrow = 3)
 
+#Naming column and row of matix
 matrix(
   1:4, nrow = 2, byrow = TRUE, dimnames = list(c("x", "z"), c("q", "r"))
 )
@@ -27,4 +28,7 @@ print(y)
 cbind(y, c(10, 12))
 
 
+mat <- matrix(21:36, nrow = 4, byrow = FALSE)
+mat
+mat[c(1, 4), c(1, 3)]
 
