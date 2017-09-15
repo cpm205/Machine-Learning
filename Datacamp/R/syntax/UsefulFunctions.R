@@ -17,5 +17,5 @@ social_vec<- append(li_vec,fb_vec)
 
 # Sort social_vec
 sort(unlist(social_vec),decreasing = TRUE)
-
+seq(1, 7, by = 2)
 rep(seq(1, 7, by = 2), times = 7)

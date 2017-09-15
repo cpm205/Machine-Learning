@@ -20,7 +20,8 @@ baseball = [[180, 78.4],
 
 # Create a 2D numpy array from baseball: np_baseball
 np_baseball = np.array(baseball)
-
+np_transpose = np.transpose(np_baseball)
+print(np_transpose)
 # Print out the type of np_baseball
 print(type(np_baseball))
 
