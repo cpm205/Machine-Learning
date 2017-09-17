@@ -10,3 +10,5 @@ print(x)
 
 ##Ensure there is no missing value in data be
 knn.fit(iris.data,iris.target)
+
+
