@@ -47,3 +47,10 @@ print(np.median(np_baseball))
 # Print out correlation between first and second column. Replace 'None'
 corr = np.corrcoef(np_baseball[:,0], np_baseball[:,1])
 print("Correlation: " + str(corr))
+
+
+costs = np.column_stack(([2, 2, 2, 1, 2, 2, 2, 3],
+                         [6, 6, 6, 6, 5, 4, 6, 6]))
+print(costs)
+mean_costs = np.mean(costs[:, 0])
+print(mean_costs)
