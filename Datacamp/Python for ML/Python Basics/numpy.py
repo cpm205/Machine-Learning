@@ -54,3 +54,11 @@ costs = np.column_stack(([2, 2, 2, 1, 2, 2, 2, 3],
 print(costs)
 mean_costs = np.mean(costs[:, 0])
 print(mean_costs)
+
+
+
+x = np.array([6, 9, 7, 24])
+y = np.array([2, 3, 14, 26])
+z = np.array([x, y])
+#shape
+print(y.shape)
