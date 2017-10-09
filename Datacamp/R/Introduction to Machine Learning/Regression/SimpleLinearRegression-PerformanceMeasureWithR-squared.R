@@ -1,5 +1,6 @@
 #You've correctly calculated the RMSE in the last exercise, but were you able to interpret it? 
-#You can compare the RMSE to the total variance of your response by calculating the R2R2, which is unitless! The closer R2 to 1, the greater the degree of linear association is between the predictor and the response variable.
+#You can compare the RMSE to the total variance of your response by calculating the R2, which is unitless! 
+#The closer R2 to 1, the greater the degree of linear association is between the predictor and the response variable.
 #R calculates these performance measures for you. You can display them by applying summary() to your linear model object. 
 #Your job is to now manually calculate R2 and compare your value to the value that R calculated automatically.
 
