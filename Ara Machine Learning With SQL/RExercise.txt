@@ -1,0 +1,61 @@
+if (!require("ggplot2")) {
+    install.packages("ggplot2")
+}
+
+# Load the package.
+library("ggplot2")
+#------------------------------------------------------------
+### A Simple  Example   
+
+# Look at the data sets that come with the package.
+data(package = "ggplot2")$results
+# Note that the results in are shown in a new window.
+
+# ggplot2 contains a dataset called diamonds. Make this dataset available using the data() function.
+data(diamonds, package = "ggplot2")
+#------------------------------------------------------------
+# Create a listing of all objects in the "global environment". Look for "diamonds" in the results.
+ls()
+#------------------------------------------------------------
+# Now investigate the structure of diamonds, a data frame with 53,940 observations
+str(diamonds)
+#------------------------------------------------------------
+# Print the first few rows.
+head(diamonds) 
+#------------------------------------------------------------
+# Print the last 6 lines.  
+tail(diamonds)
+#------------------------------------------------------------
+# Find out what kind of object it is.
+class(diamonds)
+#------------------------------------------------------------
+# Look at the dimension of the data frame.
+dim(diamonds)
+#------------------------------------------------------------
+
+### Plots in R       
+
+# Create a random sample of the diamonds data.
+diamondSample <- diamonds[sample(nrow(diamonds), 5000),]
+dim(diamondSample)
+head(diamondSample)
+# R has three systems for static graphics: base graphics, lattice and ggplot2.  
+# This example uses ggplot2
+
+# Set the font size so that it will be clearly legible.
+theme_set(theme_gray(base_size = 18))
+
+# In this sample you use ggplot2.?
+ggplot(diamondSample, aes(x = carat, y = price)) +
+  geom_point(colour = "blue")
+#------------------------------------------------------------
+# Add a log scale.
+ggplot(diamondSample, aes(x = carat, y = price)) +
+  geom_point(colour = "blue") +
+  scale_x_log10()
+#------------------------------------------------------------
+# Add a log scale for both scales.
+ggplot(diamondSample, aes(x = carat, y = price)) +
+  geom_point(colour = "blue") +
+  scale_x_log10() +
+  scale_y_log10()
