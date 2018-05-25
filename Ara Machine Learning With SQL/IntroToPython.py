@@ -4,7 +4,7 @@ import pandas as pd
 
 # by default the read_csv function will read a comma separated file,
 
-df = pd.read_csv('D:/data/countrystat.csv')
+df = pd.read_csv('C:/MyStuff/Machine-Learning/Ara Machine Learning With SQL/countrystat.csv')
 
  
 
