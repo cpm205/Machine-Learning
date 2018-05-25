@@ -6,9 +6,11 @@ from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 
 iris = datasets.load_iris();
+print(type(iris))
 
 print("Show Database")
 print(iris)
+
 
 X = iris.data
 y = iris.target
