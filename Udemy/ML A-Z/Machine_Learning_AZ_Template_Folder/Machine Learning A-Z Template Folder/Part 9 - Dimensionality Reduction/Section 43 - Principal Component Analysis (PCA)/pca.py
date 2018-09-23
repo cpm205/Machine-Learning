@@ -22,9 +22,25 @@ X_test = sc.transform(X_test)
 
 # Applying PCA
 from sklearn.decomposition import PCA
+#pca = PCA(n_components = None) #this line needs to run first to find out all variance of each principle component.
+#The reason we pick top 2 principle components because we want to get 2 dimensions in the visualization of the training, and those 2 components
+#explain 56% of the variance and that's pretty good.
+#To run the line below, we need to re-run all the code.
 pca = PCA(n_components = 2)
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
+
+#When we run below line with n_components = None at first time, the variable explained_variance would show us PCA for each of these 13 independent variables, but 
+#these are not the original independent variables that we had in our dataset, these are the new extracted independent variables but that explained the most the variance
+#Those independent variables are ranked from the first principal component that explains the most the variance down to the last principal component that explains the least the variance.
+#And then if we take the top three principal components that will explain 37 plus 10:19 Well 11 equals
+#67 percent of the variance and et cetera.
+#So remember what we want to take are the first two principal components because we want to get two dimensions
+#in the visualization of the training such result and therefore we need two independent variables that
+#is the two principal components.
+#And so we can see that if we take the two principal components here well they will explain 56 percent
+#of the variance and that is pretty good.
+#That is actually OK to make a classification more out of it.
 explained_variance = pca.explained_variance_ratio_
 
 # Fitting Logistic Regression to the Training set
