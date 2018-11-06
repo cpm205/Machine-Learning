@@ -25,25 +25,25 @@ X[:, 2] = labelencoder_X_2.fit_transform(X[:, 2])
 #this will turn geography col into 3 different column - 0:France 1:Germany 2:Spain
 onehotencoder = OneHotEncoder(categorical_features = [1])
 X = onehotencoder.fit_transform(X).toarray()
+#To Avoid dummy variable trap, so we have to create dummy variables for categorical variables
+#of country since it contains 3 countries. No need to do same thing to Gender, since it
+#only has 2 categories.
 X = X[:, 1:]
-
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
-
 #Feature Scaling
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_text)
+X_test = sc.transform(X_test)
 
-#Creating your classifier
+#Part 2 - Make ANN
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
 
-#Predicting the test set results
-y_pred = classifer.predict(X_test)
-
-#Making the confusion Matrix
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
+#Initial ANN
+classifier = Sequential()
