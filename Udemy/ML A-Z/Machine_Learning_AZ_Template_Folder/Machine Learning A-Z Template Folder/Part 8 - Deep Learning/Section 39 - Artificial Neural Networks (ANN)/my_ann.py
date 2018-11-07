@@ -47,3 +47,20 @@ from keras.layers import Dense
 
 #Initial ANN
 classifier = Sequential()
+
+#Adding the input layer and the first hidden layer
+#output_dim: Number of nodes you want to add to hidden layer
+#It's hard to choose how many nodes to added into hidden layer, in general we can use
+#formula like (number of input nodes:11 + number of ouput node:1)/2 = 6
+#init = 'uniform': will initialize the weight as small number close to zero using uniform function.
+#input_dim: number of nodes in input layer.
+classifier.add(Dense(output_dim = 6, init = 'uniform', activation = 'relu', input_dim = 11))
+
+# Adding the second hidden layer
+classifier.add(Dense(output_dim = 6, init = 'uniform', activation = 'relu'))
+
+# Adding the output layer
+#If we have more than 2 classes that need to classified, first you have to change
+#output_dim parameter depend on number of classes, second use softmax as 
+#activation function.
+classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
