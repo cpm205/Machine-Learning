@@ -67,3 +67,20 @@ classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
 
 # Compiling the ANN
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+# Fitting the ANN to the Training set
+#Batch_size: how mnay observations after been trainned which you want to update the weight
+#Epoch: whole trainning set get passed into ANN then come back to update the weight, that is one epoch
+classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
+
+# Part 3 - Making the predictions and evaluating the model
+
+# Predicting the Test set results
+y_pred = classifier.predict(X_test)
+#Turn the probability result into true or false
+y_pred = (y_pred > 0.5)
+
+# Making the Confusion Matrix to see how accurate our prediction is.
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+accuray = (1904 + 255)/2500
