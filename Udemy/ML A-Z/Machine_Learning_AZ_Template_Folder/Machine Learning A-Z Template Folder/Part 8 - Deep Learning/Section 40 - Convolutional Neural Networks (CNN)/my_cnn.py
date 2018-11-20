@@ -30,6 +30,9 @@ classifier = Sequential()
 #model.
 classifier.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = 'relu'))
 
+# Step 2 - Pooling
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
 
 #Feature Scaling
 #Feature scaling is 100% compulsory in deep learning especially in computer vision
