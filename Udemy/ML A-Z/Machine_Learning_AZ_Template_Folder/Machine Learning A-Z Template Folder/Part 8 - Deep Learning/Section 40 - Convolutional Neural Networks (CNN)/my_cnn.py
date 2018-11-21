@@ -67,6 +67,10 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 #during the training is many diverse images inside these batches.
 from keras.preprocessing.image import ImageDataGenerator
 
+#solve "image file is truncated" issue
+#from PIL import ImageFile
+#ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 train_datagen = ImageDataGenerator(rescale = 1./255,
                                    shear_range = 0.2,
                                    zoom_range = 0.2,
@@ -141,3 +145,25 @@ classifier.fit_generator(training_set,
 #test_image = np.expand_dims(test_image, axis=0)
 # 
 #result = classifier.predict_on_batch(test_image)
+    
+
+#how to get loss curve and accuracy curve ?
+#history = model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, verbose=0)
+## list all data in history
+#print(history.history.keys())
+## summarize history for accuracy
+#plt.plot(history.history['acc'])
+#plt.plot(history.history['val_acc'])
+#plt.title('model accuracy')
+#plt.ylabel('accuracy')
+#plt.xlabel('epoch')
+#plt.legend(['train', 'test'], loc='upper left')
+#plt.show()
+## summarize history for loss
+#plt.plot(history.history['loss'])
+#plt.plot(history.history['val_loss'])
+#plt.title('model loss')
+#plt.ylabel('loss')
+#plt.xlabel('epoch')
+#plt.legend(['train', 'test'], loc='upper left')
+#plt.show()
