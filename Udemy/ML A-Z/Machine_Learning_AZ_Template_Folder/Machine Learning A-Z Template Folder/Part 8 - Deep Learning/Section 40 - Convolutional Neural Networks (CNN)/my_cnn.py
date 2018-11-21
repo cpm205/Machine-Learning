@@ -33,9 +33,13 @@ classifier.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = '
 # Step 2 - Pooling
 #2*2 is smallest
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
-# Adding a second convolutional layer
+
+# Adding a second convolutional layer could increase accuracy
+#No need to specify input_shape in second convolutional layer, because the input for this layer is
+#result from previous MaxPooling.
 classifier.add(Convolution2D(32, (3, 3), activation="relu"))
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
 # Step 3 - Flattening
 classifier.add(Flatten())
 
@@ -50,7 +54,7 @@ classifier.add(Dense(output_dim = 128, activation = 'relu'))
 #Output layer
 #Output_dim = 1 - Because we are predicting dog or cat, so the node in output layer is 1.
 classifier.add(Dense(output_dim = 1, activation = 'sigmoid'))
-
+#Adding another fully connected layer could increase the accuracy
 # Compiling the CNN
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
@@ -70,7 +74,8 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 #target_size = (64, 64) - When we do convolution, we choose image input_shape is
-#64* 64, therefore the our target_size has to be 64*64 as well.
+#64* 64, therefore the our target_size has to be 64*64 as well. Sometime increase this number
+#can increase the accuracy.
 #class_mode = 'binary' - we ony have 2 categories:cat and dog, so mode is binary
 training_set = train_datagen.flow_from_directory('dataset/training_set',
                                                  target_size = (64, 64),
