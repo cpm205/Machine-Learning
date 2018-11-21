@@ -33,7 +33,9 @@ classifier.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = '
 # Step 2 - Pooling
 #2*2 is smallest
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
-
+# Adding a second convolutional layer
+classifier.add(Convolution2D(32, (3, 3), activation="relu"))
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
 # Step 3 - Flattening
 classifier.add(Flatten())
 
@@ -55,4 +57,82 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 
 # Part 2 - Fitting the CNN to the images
 #Image classification requires a lot of images for training the model, in this case we only have 10000 images,
-#which is not a lot. ImageDataGenerator will help us in this case, 
+#which is not a lot. ImageDataGenerator will help us in this case, it will create mnay batches of 
+#our images and then each batch will apply some random transformations on a random selection
+#of our images like rotating them, shifting them, flipping them. Eventually what we getting
+#during the training is many diverse images inside these batches.
+from keras.preprocessing.image import ImageDataGenerator
+
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                   shear_range = 0.2,
+                                   zoom_range = 0.2,
+                                   horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
+#target_size = (64, 64) - When we do convolution, we choose image input_shape is
+#64* 64, therefore the our target_size has to be 64*64 as well.
+#class_mode = 'binary' - we ony have 2 categories:cat and dog, so mode is binary
+training_set = train_datagen.flow_from_directory('dataset/training_set',
+                                                 target_size = (64, 64),
+                                                 batch_size = 32,
+                                                 class_mode = 'binary')
+
+test_set = test_datagen.flow_from_directory('dataset/test_set',
+                                            target_size = (64, 64),
+                                            batch_size = 32,
+                                            class_mode = 'binary')
+
+#steps_per_epoch - number of images in training set
+#validation_data- - number of images in testing set for validate the model
+classifier.fit_generator(training_set,
+                         steps_per_epoch = 8000,
+                         epochs = 25,
+                         validation_data = test_set,
+                         validation_steps = 2000)
+#if you want to use gpu+cpu to train the model, please use model below
+#but batch_size needs to be changed to 64 or 128 or 256 or so on
+#classifier.fit_generator(training_set,
+#                         steps_per_epoch = 8000,
+#                         epochs = 25,
+#                         validation_data = test_set,
+#                         validation_steps = 2000,
+#                         use_multiprocessing = True,
+#                         workers = 4)
+
+#we can use code below to make prediction
+#from keras.preprocessing import image as image_utils
+#import numpy as np
+# 
+#test_image = image_utils.load_img('test.jpg', target_size=(64, 64))
+#test_image = image_utils.img_to_array(test_image)
+#test_image = np.expand_dims(test_image, axis=0)
+# 
+#classes = test_set.class_indices  
+#result = classifier.predict(test_image)
+# 
+#if result[0][0] == 1:
+#    prediction = 'dog'
+#else:
+#    prediction = 'cat'
+
+#Here how you can do predictions with some cat pictures:
+# Make predictions with some cat pictures
+#from keras.preprocessing import image as image_utils
+#import numpy as np
+#predictions=[]
+#for i in range(1, 1000):
+#    test_image = image_utils.load_img('dataset/training_set/cats/cat.{0}.jpg'.format(i), target_size=(64, 64))
+#    test_image = image_utils.img_to_array(test_image)
+#    test_image = np.expand_dims(test_image, axis=0)
+#    predictions.append(classifier.predict_on_batch(test_image)[0][0])
+
+#Or you can predict one picture, cat [0] or dog[1].
+    # prediction on a new picture
+#from keras.preprocessing import image as image_utils
+#import numpy as np
+# 
+#test_image = image_utils.load_img('dataset/new_images/dog_picture.jpg', target_size=(64, 64))
+#test_image = image_utils.img_to_array(test_image)
+#test_image = np.expand_dims(test_image, axis=0)
+# 
+#result = classifier.predict_on_batch(test_image)
