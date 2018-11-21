@@ -31,8 +31,28 @@ classifier = Sequential()
 classifier.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = 'relu'))
 
 # Step 2 - Pooling
+#2*2 is smallest
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
+# Step 3 - Flattening
+classifier.add(Flatten())
 
-#Feature Scaling
-#Feature scaling is 100% compulsory in deep learning especially in computer vision
+#How many input nodes do we actually have in our input layer after flattening.
+classifier.summary()
+
+# Step 4 - Full connection
+#input Layer
+#output_dim = 128 - come from experiment
+#No need to speccify the weight initialization function, it will use "uniform" by default.
+classifier.add(Dense(output_dim = 128, activation = 'relu'))
+#Output layer
+#Output_dim = 1 - Because we are predicting dog or cat, so the node in output layer is 1.
+classifier.add(Dense(output_dim = 1, activation = 'sigmoid'))
+
+# Compiling the CNN
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+
+# Part 2 - Fitting the CNN to the images
+#Image classification requires a lot of images for training the model, in this case we only have 10000 images,
+#which is not a lot. ImageDataGenerator will help us in this case, 
