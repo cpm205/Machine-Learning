@@ -29,7 +29,8 @@ classifier = Sequential()
 #activation = 'relu' - Reason to use relu:First, remove any negative pixes, second remove linearity from
 #model.
 classifier.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = 'relu'))
-
+#Number of Params: 896 = filter:32 * row:3 * column:3 * last value in input_shape:3 + filter:32
+classifier.summary()
 # Step 2 - Pooling
 #2*2 is smallest
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
