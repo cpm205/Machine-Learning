@@ -65,7 +65,8 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 #which is not a lot. ImageDataGenerator will help us in this case, it will create mnay batches of 
 #our images and then each batch will apply some random transformations on a random selection
 #of our images like rotating them, shifting them, flipping them. Eventually what we getting
-#during the training is many diverse images inside these batches.
+#during the training is many diverse images inside these batches. This is technique is called
+#Augmentation.
 from keras.preprocessing.image import ImageDataGenerator
 
 #solve "image file is truncated" issue
